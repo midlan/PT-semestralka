@@ -1,7 +1,8 @@
 
 /**
  *
- * @author Milan Dav�dek <midlan@students.zcu.cz>
+ * @author Milan Davídek <midlan@students.zcu.cz>
+ * @author Kateřina Kratochvílová <dtwok8@students.zcu.cz>
  */
 public class Semestralka {
 
