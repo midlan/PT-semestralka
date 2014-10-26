@@ -10,16 +10,16 @@
 public class Pozice {
 
     final Uzemi mapa;
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
-    public Pozice(int x, int y, Uzemi mapa) throws SouradniceException {
+    public Pozice(double x, double y, Uzemi mapa) throws SouradniceException {
         this.setX(x);
         this.setY(y);
         this.mapa = mapa;
     }
 
-    public void setX(int x) throws SouradniceException {
+    public void setX(double x) throws SouradniceException {
         if (x < mapa.sirka) {
             this.x = x;
             return;
@@ -27,7 +27,7 @@ public class Pozice {
         throw new SouradniceException();
     }
 
-    public void setY(int y) throws SouradniceException {
+    public void setY(double y) throws SouradniceException {
         if (y < mapa.vyska) {
             this.y = y;
             return;
@@ -35,11 +35,11 @@ public class Pozice {
         throw new SouradniceException();
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 

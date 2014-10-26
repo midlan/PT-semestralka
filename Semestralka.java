@@ -1,16 +1,34 @@
 
+
+
+
 /**
  *
  * @author Milan Davídek <midlan@students.zcu.cz>
  * @author Kateřina Kratochvílová <dtwok8@students.zcu.cz>
  */
-public class Semestralka {
+
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+            import javax.swing.JFrame;
+
+public class Semestralka extends JFrame {
+
+    public Semestralka() {
+        this.setTitle("Časovač");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Simulace panel = new Simulace();
+        this.add(panel);
+
+        this.pack();
+        this.setResizable(false);
     }
-    
+
+    public static void main(String[] args) {
+        new Semestralka().setVisible(true);
+ 
+    }
 }

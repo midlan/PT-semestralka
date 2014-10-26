@@ -9,10 +9,10 @@
  */
 public class Umisteni {
 
-    final int x;
-    final int y;
+    final double x;
+    final double y;
 
-    public Umisteni(int x, int y, Uzemi uzemi) throws SouradniceException {
+    public Umisteni(double x, double y, Uzemi uzemi) throws SouradniceException {
         if (x < uzemi.sirka && y < uzemi.vyska) {
             this.x = x;
             this.y = y;

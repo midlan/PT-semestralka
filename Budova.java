@@ -9,10 +9,14 @@
  */
 public class Budova {
 
-    final Umisteni umisteni;
+    private final Umisteni umisteni;
 
     public Budova(int x, int y, Uzemi uzemi) throws SouradniceException {
         this.umisteni = uzemi.vytvorUmisteni(x, y);
     }
 
+    public Umisteni getUmisteni() {
+        return umisteni;
+    }
+    
 }

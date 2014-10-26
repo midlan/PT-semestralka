@@ -9,19 +9,19 @@
  */
 public class Uzemi {
 
-    final int sirka;
-    final int vyska;
+    final double sirka;
+    final double vyska;
 
-    public Uzemi(int sirka, int vyska) {
+    public Uzemi(double sirka, double vyska) {
         this.sirka = sirka;
         this.vyska = vyska;
     }
 
-    public Umisteni vytvorUmisteni(int x, int y) throws SouradniceException {
+    public Umisteni vytvorUmisteni(double x, double y) throws SouradniceException {
         return new Umisteni(x, y, this);
     }
 
-    public Pozice vytvorPozici(int x, int y) throws SouradniceException {
+    public Pozice vytvorPozici(double x, double y) throws SouradniceException {
         return new Pozice(x, y, this);
     }
 
