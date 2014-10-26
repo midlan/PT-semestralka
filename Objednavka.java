@@ -1,4 +1,5 @@
 
+import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,14 +10,12 @@
  *
  * @author Kate
  */
-public class Pivovar extends Budova{
-    final Umisteni umisteni;
-    //produkce 7000Hl za den
-
-    public Pivovar() throws SouradniceException {
-        super(0, 0, null);
-        this.umisteni = null;
-    }
+public class Objednavka {
+    private Hospoda hospoda;
+    private Date datum;
+    private int mnozstvi;
+    
+    
     
     
 }

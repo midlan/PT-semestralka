@@ -20,7 +20,7 @@ public class Semestralka extends JFrame {
         this.setTitle("Časovač");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Simulace panel = new Simulace();
+        Casovac panel = new Casovac();
         this.add(panel);
 
         this.pack();
