@@ -7,13 +7,9 @@
  *
  * @author Kate
  */
-public class Simulace {
+public enum DruhHospody {
+    TANKOVA, SUDOVA;
     
-    public Simulace(){
-        
-    }
-    
-    public void vytvorObjednavku(){
-        //do fronty objednavky dame random hospoda, random objednane mnostvi,
+    private DruhHospody(){
     }
 }

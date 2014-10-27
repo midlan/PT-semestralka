@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,13 +10,12 @@
  *
  * @author Kate
  */
-public class Simulace {
+public class Objednavka {
+    private Hospoda hospoda;
+    private Date datum;
+    private int mnozstvi;
     
-    public Simulace(){
-        
-    }
     
-    public void vytvorObjednavku(){
-        //do fronty objednavky dame random hospoda, random objednane mnostvi,
-    }
+    
+    
 }
