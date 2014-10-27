@@ -1,22 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Kate
  */
 public class Budova {
 
-    private final Umisteni umisteni;
+    public final double x, y;
 
-    public Budova(int x, int y, Uzemi uzemi) throws SouradniceException {
-        this.umisteni = uzemi.vytvorUmisteni(x, y);
+    public Budova(Uzemi u, double x, double y) throws SouradniceException {
+        
+        if(!u.souradniceUvnitr(x, y))
+            throw new SouradniceException();
+        
+        this.x = x;
+        this.y = y;
     }
-
-    public Umisteni getUmisteni() {
-        return umisteni;
-    }
-    
 }

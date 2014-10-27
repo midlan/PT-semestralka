@@ -16,13 +16,8 @@ public class Uzemi {
         this.sirka = sirka;
         this.vyska = vyska;
     }
-
-    public Umisteni vytvorUmisteni(double x, double y) throws SouradniceException {
-        return new Umisteni(x, y, this);
+    
+    public boolean souradniceUvnitr(double x, double y) {
+        return x < this.sirka && y < this.vyska;
     }
-
-    public Pozice vytvorPozici(double x, double y) throws SouradniceException {
-        return new Pozice(x, y, this);
-    }
-
 }
