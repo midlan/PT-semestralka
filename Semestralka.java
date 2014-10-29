@@ -29,6 +29,8 @@ public class Semestralka extends JFrame {
 
     public static void main(String[] args) {
         new Semestralka().setVisible(true);
- 
+       
+        
+       
     }
 }

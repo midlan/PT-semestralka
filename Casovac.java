@@ -12,16 +12,18 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 class Casovac extends JPanel {
     private JLabel navesti;
-    private long minuta;
+    private int minuta;
     private int den;
     private int hodina;
     private Timer casovac;
+    private Simulace simulace;
 
     public Casovac() {
         this.minuta = 0;
@@ -39,7 +41,7 @@ class Casovac extends JPanel {
         casovac = new Timer(10, posluchac);
        
         casovac.start(); 
-        Simulace simulace=new Simulace();
+        simulace=new Simulace();
     }
 
     @Override //proč mi to nefunguje.. :-x
@@ -83,9 +85,12 @@ class Casovac extends JPanel {
             if(den>=2){
                 stop();
             }
+            
             navesti.setText("Den: "+String.valueOf(den)+" "+String.valueOf(hodina)+" : "+String.valueOf(minuta));
             
-           
+            
+            Date datum=new Date(2014, 11, den, hodina, minuta);
+            simulace.simuluj(datum);
             
         }
     }
