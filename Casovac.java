@@ -12,7 +12,8 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -88,8 +89,7 @@ class Casovac extends JPanel {
             
             navesti.setText("Den: "+String.valueOf(den)+" "+String.valueOf(hodina)+" : "+String.valueOf(minuta));
             
-            
-            Date datum=new Date(2014, 11, den, hodina, minuta);
+            Calendar datum=new GregorianCalendar(2014, 11, den, hodina, minuta);
             simulace.simuluj(datum);
             
         }
