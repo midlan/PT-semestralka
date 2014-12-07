@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -12,6 +13,7 @@ public class Prekladiste extends Budova {
     private int pocetPlnychSudu;
     //private final ArrayList<Hospoda> zasobovaneHospody = new ArrayList<Hospoda>();
     private Queue<Objednavka> objednavky = new PriorityQueue<Objednavka>();
+    ArrayList<NakladniVuz> nakladniVozy = new ArrayList<NakladniVuz>();
             
     public Prekladiste(Uzemi u, double x, double y) throws SouradniceException {
         super(u, x, y);
@@ -28,6 +30,9 @@ public class Prekladiste extends Budova {
             System.out.println("Chyba překladiště nemá žádné objednávky ve frontě.");
             return;
         }
+        for(int i=0;i<nakladniVozy.size();i++){
+            
+        }
         //musime odečíst sudy
         //musime naložit auto
         //a objednavku vyndat s fronty a předat ji vozidlu
@@ -35,8 +40,5 @@ public class Prekladiste extends Budova {
         //možná nejlepší hned dát naložit auto a pak se jen koukat při přidání objednávky jestli náhodou tam neni nějaký auto s volnýma sudama navíc, nebo než se naloží 
         
     }
-    
-    
-    
-    
+  
 }

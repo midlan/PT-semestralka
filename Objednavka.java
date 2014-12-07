@@ -1,5 +1,4 @@
-
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Random;
 
 
@@ -14,18 +13,18 @@ import java.util.Random;
  */
 public class Objednavka {
     private Hospoda hospoda;
-    private Date datum;
+    private Calendar datum;
     private int mnozstvi;
-    // private Date dovezeno
+    // private Calendar dovezeno
 
-    public Objednavka(Hospoda hospoda, Date datum) {
+    public Objednavka(Hospoda hospoda, Calendar datum) {
          Random rand= new Random();
          this.mnozstvi = rand.nextInt(6) + 1;
          this.hospoda=hospoda;
          this.datum=datum;  
     }
     
-    public Objednavka(Hospoda hospoda, Date datum, int mnozstvi) {
+    public Objednavka(Hospoda hospoda, Calendar datum, int mnozstvi) {
         this.hospoda = hospoda;
         this.datum = datum;
         this.mnozstvi = mnozstvi;
