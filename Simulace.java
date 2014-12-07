@@ -17,22 +17,33 @@ import java.util.Random;
  */
 public class Simulace {
     ArrayList<Prekladiste> prekladiste=new ArrayList<Prekladiste>();
-    ArrayList<Hospoda> hospody=new ArrayList<Hospoda>();
+    ArrayList<SudovaHospoda> hospodySudove=new ArrayList<SudovaHospoda>();
+    ArrayList<TankovaHospoda> hospodyTankove=new ArrayList<TankovaHospoda>();
     //ArrayList<Objednavka> objednavky=new ArrayList<>(); to nepotřebuju ne?
     //prioritní fronta řazená podle datumu a potřebuju se dostat k prvnímu datumju
     
     public Simulace(){ 
-        //musime naplnit proměnnné nahoře
+        importZeSouboru importDat=new importZeSouboru();
+        
+        this.prekladiste=importDat.prekladiste;
+        this.hospodySudove=importDat.hospodySudove;
+        this.hospodyTankove=importDat.hospodyTankove;
+        //stejnym způsobem by sme mohli řešit i objednávky .. jo to by vlastně nešlo to musí jít pro každej den .. 
+        for (int i = 0; i < prekladiste.size(); i++) {
+            System.out.println(prekladiste.get(i).x+", "+prekladiste.get(i).y);
+        }
         
     }
     
     public void objednej(Calendar datum){
+        /*
         Random rand=new Random();
         int poradi = rand.nextInt(hospody.size()+1); 
         Hospoda hospoda = hospody.get(poradi);
         Objednavka objednavka=new Objednavka(hospoda ,datum);
         hospoda.getPrekladiste().Objednej(objednavka);
         System.out.println("Byla vytvořena "+objednavka.toString());
+                */
     }
   
    public void skontrolujAkce(){
@@ -79,7 +90,7 @@ public class Simulace {
           objednej(datum);
           
           
-          System.out.println(datum);
+          
   
           for(int i=0;i<1000;i++){
               
