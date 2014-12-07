@@ -23,6 +23,5 @@ public class Uzemi {
     
     public Misto vytvorMisto() throws Exception {
         return new Misto(Math.random() * this.sirka, Math.random() * this.vyska, this);
-        //todo je generování správně?
     }
 }
