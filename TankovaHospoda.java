@@ -5,7 +5,8 @@
  */
 public class TankovaHospoda extends Hospoda {
     
-    double objemTanku;
+    public static final String ZKRATKA = "t";
     
+    //todo
     
 }

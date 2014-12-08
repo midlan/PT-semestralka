@@ -5,14 +5,43 @@
  */
 public class Sud {
     
-    public final double objem;
-    private boolean naplneny = false;
+    private final int objem = 50, vyrobniCislo;
+    private boolean plny = false;
+    
 
-    public Sud(double objem) {
-        this.objem = objem;
+    private static int poslVyrCislo = 0;
+    
+    public Sud() {
+        this.vyrobniCislo = ++poslVyrCislo;
+    }
+
+    public boolean isPlny() {
+        return this.plny;
     }
     
-    public void naplnit(Pivovar p) {
-        //todo
+    public void naplnit() {
+        
+        if(this.plny) {
+            throw new IllegalArgumentException("Sud už je plný, nelze ho znovu naplnit");
+        }
+        
+        this.plny = true;
+    }
+
+    public void vyprazdnit() {
+        
+        if(!this.plny) {
+            throw new IllegalArgumentException("Sud už je prázdný, nelze ho znovu vyprázdnit");
+        }
+        
+        this.plny = false;
+    }
+
+    public int getObjem() {
+        return this.objem;
+    }
+
+    public int getVyrobniCislo() {
+        return this.vyrobniCislo;
     }
 }

@@ -24,41 +24,30 @@ public class Uzemi {
 
     public void pridejBudovu(Budova b) {
 
-        if (!this.sourUvnitr(b.x, b.y)) {
+        if (!this.sourUvnitr(b.getX(), b.getY())) {
             throw new IllegalArgumentException("Souřadnice budovy jsou mimo toto území");
         }
 
-        budovy.add(b);
+        this.budovy.add(b);
     }
 
-    public double vzdalenost(Budova a, Budova b) {
-
-        if (a == null || b == null) {
-            throw new IllegalArgumentException("Jedna z budov je null");
-        }
-
-        if (!budovy.contains(a) || !budovy.contains(b)) {
-            throw new IllegalArgumentException("Jedna z budov není v tomto území.");
-        }
-
-        return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+    public boolean obsahujeBudovu(Budova b) {
+        return this.budovy.contains(b);
     }
 
-    public ArrayList<Budova> nejblizsiBudovy(double x, double y, int pocet) {
+    public Budova[] nejblizsiBudovy(double x, double y, int pocet) {
 
         if (!this.sourUvnitr(x, y)) {
             throw new IllegalArgumentException("Souřadnice jsou mimo toto území");
         }
+
+        ArrayList<Budova> budovy = new ArrayList<Budova>();
+
         //todo získat budovy
-        return new ArrayList<Budova>();
+        return (Budova[]) budovy.toArray();
     }
 
-    public ArrayList<Budova> nejblizsiBudovy(Budova b, int pocet) {
-
-        if (!this.budovy.contains(b)) {
-            throw new IllegalArgumentException("Budova nepatří do tohoto území");
-        }
-
-        return this.nejblizsiBudovy(b.x, b.y, pocet);
+    public Budova[] getBudovy() {
+        return (Budova[]) this.budovy.toArray();
     }
 }

@@ -8,16 +8,18 @@ import java.util.Queue;
  * @author Kate
  */
 public class Prekladiste extends Budova {
+    
+    public static final String ZKRATKA = "pp";
 
     private final int kapacita = 2000;
     private int pocetPlnychSudu;
     //private final ArrayList<Hospoda> zasobovaneHospody = new ArrayList<Hospoda>();
     private Queue<Objednavka> objednavky = new PriorityQueue<Objednavka>();
     ArrayList<NakladniVuz> nakladniVozy = new ArrayList<NakladniVuz>();
-            
-    public Prekladiste(Uzemi u, double x, double y) throws SouradniceException {
-        super(u, x, y);
-        this.pocetPlnychSudu=2000;
+
+    public Prekladiste(int pocetPlnychSudu, String nazev, Uzemi u, double x, double y) {
+        super(nazev, u, x, y);
+        this.pocetPlnychSudu = pocetPlnychSudu;
     }
     
     public void Objednej(Objednavka objednavka){
