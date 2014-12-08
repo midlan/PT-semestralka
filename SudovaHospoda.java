@@ -6,13 +6,13 @@ import java.util.LinkedList;
  * @author midlan_
  */
 public class SudovaHospoda extends Hospoda {
-
     public static final String ZKRATKA = "s";
 
+    private Prekladiste prekladiste;
     private LinkedList<Sud> sudy = new LinkedList<Sud>();
 
-    public SudovaHospoda(String nazev, Uzemi u, Prekladiste prekladiste, double x, double y) {
-        super(nazev, u, prekladiste, x, y);
+    public SudovaHospoda(String nazev, Uzemi u, double x, double y) {
+        super(nazev, u, x, y);
     }
     
     public void dodatSud(Sud s) {

@@ -13,73 +13,103 @@ import java.util.ArrayList;
  * @author Kate
  */
 public class importZeSouboru {
-    int xMapy;
-    int yMapy;
+    static int pocetPlnychSuduVPrekladisti=2000;
+    
+    Uzemi uzemi;
     
     Pivovar pivovar;
-    ArrayList<Prekladiste> prekladiste=new ArrayList<Prekladiste>();
-    ArrayList<SudovaHospoda> hospodySudove=new ArrayList<SudovaHospoda>();
-    ArrayList<TankovaHospoda> hospodyTankove=new ArrayList<TankovaHospoda>();
+    private ArrayList<Prekladiste> prekladiste=new ArrayList<Prekladiste>();
+    private ArrayList<SudovaHospoda> hospodySudove=new ArrayList<SudovaHospoda>();
+    private ArrayList<TankovaHospoda> hospodyTankove=new ArrayList<TankovaHospoda>();
     
     public importZeSouboru(){
     	BufferedReader reader;
     	try{
             reader = new BufferedReader(new FileReader("./src/data/input.txt")); //testovaci
             //reader = new BufferedReader(new FileReader("../data/mesta.txt"));
-            System.out.println("reader good");
+
             String radka;
             while ((radka = reader.readLine()) != null) {
-                    System.out.println("cyklus");
                     String[] data=radka.split("\t");
 
                     if(data.length == 2){ 
                        //prisla velikost mapy
-                        System.out.println("prisla velikost mapy");
-                       this.xMapy=Integer.parseInt(data[0]);
-                       this.yMapy=Integer.parseInt(data[1]);
+                        this.uzemi=new Uzemi(Integer.parseInt(data[0]), Integer.parseInt(data[1]));
                     }
                     else if(data.length == 4){
-                        System.out.println("prisla budova");
-                        
-                        for (int i = 0; i < data.length; i++) {
-                            System.out.println(i+":"+data[i]);
-                        }
+
                         //přišla budova
                         String nazev=data[0];
-                        System.out.println("0");
                         double souradniceX=Double.parseDouble(data[1]);
-                        System.out.println("1");
                         double souradniceY=Double.parseDouble(data[2]);
-                        System.out.println("2");
                         String typBudovy=data[3];
                         
-                        if(typBudovy.equals("p")){
-                            System.out.println("pivovar");
-                            //todo 
-                            pivovar=new Pivovar(null, souradniceX, souradniceY, 7000);
-                            System.out.println("pivovar má probl");
-                        }
-                        else if(typBudovy.equals("pp")){
-                            System.out.println("prekladist");
-                            prekladiste.add(new Prekladiste(null, souradniceX, souradniceY));
+                        
+                        if(typBudovy.equals("pp")){
+                            prekladiste.add(new Prekladiste(pocetPlnychSuduVPrekladisti, nazev, uzemi, souradniceX, souradniceY));
                         }
                         else if(typBudovy.equals("s")){
-                            hospodySudove.add(new SudovaHospoda());
+                            hospodySudove.add(new SudovaHospoda(nazev, uzemi, souradniceY, souradniceY));
                         }
                         else if(typBudovy.equals("t")){
-                            hospodyTankove.add(new TankovaHospoda());
+                            hospodyTankove.add(new TankovaHospoda(nazev, uzemi, souradniceY, souradniceY));
                         }
                         
+                    }
+                    else if(data.length==5){
+                        String nazev=data[0];
+                        double souradniceX=Double.parseDouble(data[1]);
+                        double souradniceY=Double.parseDouble(data[2]);
+                        String typBudovy=data[3];
+                        int produkce=Integer.parseInt(data[4]);
+
+                        
+                        if(typBudovy.equals("p")){
+                            pivovar=new Pivovar(nazev, produkce, uzemi, souradniceX, souradniceY);
+                        }
                     }
                     else{
                         System.out.println("Řadek neleze rozpoznat:  "+data.toString());
                     }
-                    System.out.println("konec cyklu");
             }
         
-    	}catch(Exception e){
+    	}
+        catch(IllegalArgumentException e){
+            System.out.println("Soubor obsahuje špatný formát");
+        }
+        catch(Exception e){
     		System.out.println("Při čtení souboru vznikla chyba. Soubor neexistuje. Nebo obsahuje špatný formát. ");
     	}
+    }
+    
+    public SudovaHospoda[] getSudoveHospody(){
+        SudovaHospoda[] sudoveHospodyPole=new SudovaHospoda[hospodySudove.size()];
+        
+        for(int i=0;i<sudoveHospodyPole.length;i++){
+            sudoveHospodyPole[i]=hospodySudove.get(i);
+        }
+        
+        return sudoveHospodyPole;
+    }
+    
+    public TankovaHospoda[] getTankoveHospody(){
+        TankovaHospoda[] tankoveHospodyPole=new TankovaHospoda[hospodyTankove.size()];
+        
+        for(int i=0;i<tankoveHospodyPole.length;i++){
+            tankoveHospodyPole[i]=hospodyTankove.get(i);
+        }
+        
+        return tankoveHospodyPole;
+    }
+    
+    public Prekladiste[] getPrekladiste(){
+        Prekladiste[] prekladistePole=new Prekladiste[prekladiste.size()];
+        
+        for(int i=0;i<prekladistePole.length;i++){
+            prekladistePole[i]=prekladiste.get(i);
+        }
+        
+        return prekladistePole;
     }
     
 }

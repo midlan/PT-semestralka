@@ -9,10 +9,10 @@ public class Pivovar extends Budova {
     
     public static final String ZKRATKA = "p";
     
-    private final double denniProdukce;
+    private final int denniProdukce;
     private HashSet<Prekladiste> prekladiste = new HashSet<Prekladiste>();
 
-    public Pivovar(String nazev, double denniProdukce, Uzemi u, double x, double y) {
+    public Pivovar(String nazev, int denniProdukce, Uzemi u, double x, double y) {
         super(nazev, u, x, y);
         this.denniProdukce = denniProdukce;
     }
