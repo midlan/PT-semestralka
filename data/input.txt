@@ -1,3 +1,4 @@
+500	500
 Chmelokvas	249.5	249.5	p
 Pøekladištì 1	415.83	332.67	pp
 Pøekladištì 2	332.67	415.83	pp
