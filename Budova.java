@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -12,7 +13,8 @@ public abstract class Budova {
     private final String nazev;
 
     private final ArrayList<Cesta> cesty = new ArrayList<Cesta>();
-
+    
+    private static final HashMap<String, Budova> budovy = new HashMap<String, Budova>();
     public static final String ZKRATKA = null;
 
     public Budova(String nazev, Uzemi u, double x, double y) {
@@ -34,6 +36,7 @@ public abstract class Budova {
         this.nazev = nazev;
         this.uzemi = u;
         this.uzemi.pridejBudovu(this);
+        budovy.put(nazev, this);
     }
 
     public double vzdalenost(Budova b) {
@@ -86,5 +89,9 @@ public abstract class Budova {
 
     public String getNazev() {
         return nazev;
+    }
+    
+    public static Budova najdi(String nazev) {
+        return budovy.get(nazev);
     }
 }
