@@ -69,6 +69,14 @@ public class importZeSouboru {
                         }
                     }
                     else{
+                        String hospoda=data[0];
+                        
+                        
+                        
+                        for(int i=1;i<data.length;i++){
+                            
+                        }
+                        
                         System.out.println("Řadek neleze rozpoznat:  "+data.toString());
                     }
             }
@@ -78,7 +86,7 @@ public class importZeSouboru {
             System.out.println("Soubor obsahuje špatný formát");
         }
         catch(Exception e){
-    		System.out.println("Při čtení souboru vznikla chyba. Soubor neexistuje. Nebo obsahuje špatný formát. ");
+    		System.out.println("Při čtení souboru vznikla chyba. Soubor neexistuje.");
     	}
     }
     

@@ -1,4 +1,3 @@
-import java.util.Calendar;
 import java.util.Random;
 
 
@@ -13,26 +12,26 @@ import java.util.Random;
  */
 public class Objednavka {
     private Hospoda hospoda;
-    private Calendar datum;
+    private int minut;
     private int mnozstvi;
     // private Calendar dovezeno
 
-    public Objednavka(Hospoda hospoda, Calendar datum) {
+    public Objednavka(Hospoda hospoda, int minut) {
          Random rand= new Random();
          this.mnozstvi = rand.nextInt(6) + 1;
          this.hospoda=hospoda;
-         this.datum=datum;  
+         this.minut=minut;  
     }
     
-    public Objednavka(Hospoda hospoda, Calendar datum, int mnozstvi) {
+    public Objednavka(Hospoda hospoda, int minut, int mnozstvi) {
         this.hospoda = hospoda;
-        this.datum = datum;
+        this.minut = minut;
         this.mnozstvi = mnozstvi;
     }
 
     @Override
     public String toString() {
-        return "Objednavka: "+datum+" - "+this.hospoda+" množství: "+this.mnozstvi; 
+        return "Objednavka: "+minut+" - "+this.hospoda+" množství: "+this.mnozstvi; 
     }
     
     

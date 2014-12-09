@@ -1,9 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.PriorityQueue;
 import java.util.Random;
 
 /*
@@ -35,7 +31,8 @@ public class Simulace {
        
     }
     
-    public void objednej(Calendar datum){
+    public void objednej(Hospoda hospoda){
+        
         /*
         Random rand=new Random();
         int poradi = rand.nextInt(hospody.size()+1); 
@@ -51,9 +48,48 @@ public class Simulace {
        // že by sme udělali výčtovej typ na stav nakládání, na cestě, volné ????
    }
    
-   public void vygenerujObjednavky(Calendar datum, ArrayList<Hospoda> hospody ){
+   /**
+        Zkopiruje pole a promycha jeho pořadi
+        @param hospody pole všech hospod
+        @return hospody2 zkopirovane a promychane pole
+   */
+   public Hospoda[] promychejPole(Hospoda[] hospody){
+        Hospoda[] hospody2 = new Hospoda[hospody.length];
+        System.arraycopy(hospody, 0, hospody2, 0, hospody.length); 
+        return hospody2;
+   }
+   
+   
+   public void vygenerujObjednavky(Hospoda[] hospody){
+       Hospoda[] hospodyPromychane=promychejPole(hospody);
 
+       int pocetObjednavekNaDen=4000;
        
+       double [] procentualtniRozdeleni = { 0.25, 0.25 , 0.2, 0.15 , 0.1, 0.05 };
+       int objednavkyOd=cas+8*60; //od osmi
+       int objednavkydo=cas+16*60; //do 4 odpoledne
+   
+       double delkaUseku=(procentualtniRozdeleni.length/(objednavkydo-objednavkyOd));
+       int pocetMinutNaUsek = (int) (60 * delkaUseku);
+      
+       int indexHospody=0;
+       for(int i=0;i<(objednavkydo-objednavkyOd);i++){
+           int pocetObjednavekNaDanyUsek = (int)(pocetObjednavekNaDen*procentualtniRozdeleni[i]);
+           double usekOdHodin=8 + i * delkaUseku;
+           
+           for(int j=0;j<pocetObjednavekNaDanyUsek;j++){
+               Random rand=new Random();
+               
+               int pocetMinutek = i*pocetMinutNaUsek+rand.nextInt(pocetMinutNaUsek);
+               
+               Objednavka obj=new Objednavka(hospodyPromychane[indexHospody], pocetMinutek);
+               indexHospody++;
+               
+               //když bych vzala něco z čeho když si vezmu hodnotu tak se rovnou přemaže tak by to bylo super.. protože pak by
+               //se mi nemohlo stát že se ta hospoda objedná víckrát za den
+               //úsek po minutě pak si určim kolik to je minut a pak si vygeneruju kolik objednávek se má tu minutu provést??
+         }
+       }
    }
    
    public void vypisCas(){
