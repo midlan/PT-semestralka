@@ -50,4 +50,9 @@ public class Uzemi {
     public Budova[] getBudovy() {
         return (Budova[]) this.budovy.toArray();
     }
+
+    @Override
+    public String toString() {
+        return this.sirka + Semestralka.DAT_SOUB_ODDELOVAC + this.vyska;
+    }
 }
