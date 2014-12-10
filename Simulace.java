@@ -1,6 +1,11 @@
 
-import java.util.ArrayList;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.Random;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,13 +16,16 @@ import java.util.Random;
  *
  * @author Kate
  */
-public class Simulace {
+public class Simulace extends JPanel{
+    private JLabel texty;
     Prekladiste[] prekladiste;
     SudovaHospoda[] hospodySudove;
     TankovaHospoda[] hospodyTankove;
     int cas; //v minutach
     //ArrayList<Objednavka> objednavky=new ArrayList<>(); to nepotřebuju ne?
     //prioritní fronta řazená podle datumu a potřebuju se dostat k prvnímu datumju
+    
+
     
     public Simulace(){ 
         
@@ -28,7 +36,32 @@ public class Simulace {
         this.hospodyTankove=importDat.getTankoveHospody();
         //stejnym způsobem by sme mohli řešit i objednávky .. jo to by vlastně nešlo to musí jít pro každej den .. 
         
-       
+        
+        this.setPreferredSize(new Dimension(800, 300));
+ 
+        texty=new JLabel();
+        add(texty);
+        
+        JPanel komponenty;
+        JButton sudovaHospodaButon;
+        JButton tankovaHospodaButon;
+        JButton tik;
+        
+        FlowLayout layout = new FlowLayout();
+        setLayout(layout);
+        
+        komponenty = new JPanel();
+        add(komponenty);
+
+        sudovaHospodaButon = new JButton("Objednavka pro sudovou hospodu ");
+        komponenty.add(sudovaHospodaButon);
+        
+        tankovaHospodaButon = new JButton("Objednavka pro tankovou hospod. ");
+        komponenty.add(tankovaHospodaButon);
+        
+        tik = new JButton("Tik ");
+        komponenty.add(tik);
+
     }
     
     public void objednej(Hospoda hospoda){
@@ -93,26 +126,18 @@ public class Simulace {
    }
    
    public void vypisCas(){
-       System.out.println(this.cas);
        int hodin = (this.cas/60%24);
        int den=this.cas/60/24;
        
-       System.out.println("Den: "+den+" hodina: "+hodin);
+      texty.setText("Den: "+den+" hodina: "+hodin);
    }
    
    public void simuluj(){
          // objednej(datum);
+         
          while(cas < 7*24*60){
              vypisCas();
              cas=cas+60; 
          } 
-          
-          
-         
-      
-   }
-   
-
-    
-    
+   }   
 }
