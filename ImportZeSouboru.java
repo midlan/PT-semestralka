@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Importuje vstupní data ze souboru a rozděluje je do příslušných struktur. 
  *
  * @author Kateřina Kratochvílová <dtwok8@students.zcu.cz>
  */
@@ -48,7 +49,10 @@ public class ImportZeSouboru {
     	}
     }
     
-    
+    /**
+     * Prida budovu. Na zakladě typu budovy (také se bere ze souboru) vime o jakou budovu se jedna. 
+     * @param data řádek načtený ze souboru, rozsekaný na jednotlivé položky.
+     */
     private void pridejBudovu(String[] data){
         try{
             String nazev=data[0];
@@ -67,7 +71,7 @@ public class ImportZeSouboru {
                 hospodyTankove.add(new TankovaHospoda(nazev, uzemi, souradniceY, souradniceY));
             }
 
-            if(typBudovy.equals("p")){
+            if(typBudovy.equals("p")){ 
                 int produkce=Integer.parseInt(data[4]);
                 pivovar=new Pivovar(nazev, produkce, uzemi, souradniceX, souradniceY);
             }
@@ -75,7 +79,12 @@ public class ImportZeSouboru {
             System.out.println("Při čtení souboru vznikla chyba, pravděpodobně formát neodpovídá požadavkům. ");
         }
     }
-    
+    /**
+     * Přídádá cesty k hospodě. Na prvním míste řádku v souboru je jmenoho budovy. 
+     * Nasledně jsou za ním budovy, ke kterým má budova přímou cestu. 
+     * 
+     * @param data řádek načtený ze souboru, rozsekaný na jednotlivé položky.
+     */
     private void pridejCesty(String[] data){
         try{
             Budova budova=Budova.najdi(data[0]);                        
@@ -89,6 +98,11 @@ public class ImportZeSouboru {
         }
     }
     
+    /**
+    * Vrati sudove hospody jako pole. 
+    * 
+    * @return sudoveHospodyPole sudove hospody.
+    */
     public SudovaHospoda[] getSudoveHospody(){
         SudovaHospoda[] sudoveHospodyPole=new SudovaHospoda[hospodySudove.size()];
         
@@ -99,6 +113,11 @@ public class ImportZeSouboru {
         return sudoveHospodyPole;
     }
     
+    /**
+     * Vrati tankove hospody jako pole. 
+     * 
+     * @return tankoveHospodyPole tankove hospody. 
+     */
     public TankovaHospoda[] getTankoveHospody(){
         TankovaHospoda[] tankoveHospodyPole=new TankovaHospoda[hospodyTankove.size()];
         
@@ -109,6 +128,11 @@ public class ImportZeSouboru {
         return tankoveHospodyPole;
     }
     
+    /**
+     * Vrati prekladiste jako pole. 
+     * 
+     * @return prekladistePole prekladiste.
+     */
     public Prekladiste[] getPrekladiste(){
         Prekladiste[] prekladistePole=new Prekladiste[prekladiste.size()];
         
@@ -119,10 +143,18 @@ public class ImportZeSouboru {
         return prekladistePole;
     }
     
+    /**
+     * Vrati uzemi.
+     * @return uzemi uzemi.  
+     */
     public Uzemi getUzemi(){
         return this.uzemi;
     }
     
+    /**
+     * Vrati pivovar
+     * @return pivovar pivovar.
+     */
     public Pivovar getPivovar(){
         return this.pivovar;
     }
