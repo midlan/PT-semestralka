@@ -69,8 +69,9 @@ public class importZeSouboru {
                         }
                     }
                     else{
-                        String hospoda=data[0];
+                        Budova budova=Budova.najdi(data[0]);
                         
+                        budova.pridejCestu(budova);
                         
                         
                         for(int i=1;i<data.length;i++){
@@ -86,7 +87,7 @@ public class importZeSouboru {
             System.out.println("Soubor obsahuje špatný formát");
         }
         catch(Exception e){
-    		System.out.println("Při čtení souboru vznikla chyba. Soubor neexistuje.");
+    		System.out.println("Při čtení souboru vznikla chyba nebo soubor neexistuje.");
     	}
     }
     
