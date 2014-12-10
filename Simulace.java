@@ -5,7 +5,6 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -134,11 +133,18 @@ public class Simulace extends JPanel{
    
    public void simuluj(){
          // objednej(datum);
-         
+
+       Budova budova=Budova.najdi("Cuba Liberta");
+ 
+       System.out.println(budova.getNazev()+" - ");
+       Cesta [] cesty=budova.getCesty();
+      
+         /*
          for(int i=0;i<hospodyTankove.length;i++){
              System.out.print(hospodyTankove[i].getNazev());
                 System.out.println(hospodyTankove[i].getCesty().toString());
          }
+                 */
        
          while(cas < 7*24*60){
              vypisCas();
