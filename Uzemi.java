@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -11,7 +12,7 @@ public class Uzemi {
     public final double sirka;
     public final double vyska;
 
-    private final HashSet<Budova> budovy = new HashSet<Budova>();
+    private final Set<Budova> budovy = new HashSet<Budova>();
 
     public Uzemi(double sirka, double vyska) {
         this.sirka = sirka;
