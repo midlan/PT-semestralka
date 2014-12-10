@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -12,9 +14,9 @@ public abstract class Budova {
     private final Uzemi uzemi;
     private final String nazev;
 
-    private final ArrayList<Cesta> cesty = new ArrayList<Cesta>();
+    private final List<Cesta> cesty = new ArrayList<Cesta>();
     
-    private static final HashMap<String, Budova> budovy = new HashMap<String, Budova>();
+    private static final Map<String, Budova> budovy = new HashMap<String, Budova>();
     public static final String ZKRATKA = null;
 
     public Budova(String nazev, Uzemi u, double x, double y) {

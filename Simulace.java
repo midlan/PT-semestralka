@@ -29,7 +29,7 @@ public class Simulace extends JPanel{
     
     public Simulace(){ 
         
-        importZeSouboru importDat=new importZeSouboru();
+        ImportZeSouboru importDat=new ImportZeSouboru();
         
         this.prekladiste=importDat.getPrekladiste();
         this.hospodySudove=importDat.getSudoveHospody();
@@ -135,6 +135,11 @@ public class Simulace extends JPanel{
    public void simuluj(){
          // objednej(datum);
          
+         for(int i=0;i<hospodyTankove.length;i++){
+             System.out.print(hospodyTankove[i].getNazev());
+                System.out.println(hospodyTankove[i].getCesty().toString());
+         }
+       
          while(cas < 7*24*60){
              vypisCas();
              cas=cas+60; 
