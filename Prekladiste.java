@@ -17,9 +17,9 @@ public class Prekladiste extends Budova {
     private Queue<Objednavka> objednavky = new PriorityQueue<Objednavka>();
     ArrayList<NakladniVuz> nakladniVozy = new ArrayList<NakladniVuz>();
 
-    public Prekladiste(int pocetPlnychSudu, String nazev, Uzemi u, double x, double y) {
+    //todo překladiště potřebuje pivovar
+    public Prekladiste(String nazev, Uzemi u, double x, double y) {
         super(nazev, u, x, y);
-        this.pocetPlnychSudu = pocetPlnychSudu;
     }
     
     public void Objednej(Objednavka objednavka){
