@@ -1,5 +1,6 @@
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -10,7 +11,7 @@ public class Pivovar extends Budova {
     public static final String ZKRATKA = "p";
     
     private final int denniProdukce;
-    private HashSet<Prekladiste> prekladiste = new HashSet<Prekladiste>();
+    private Set<Prekladiste> prekladiste = new HashSet<Prekladiste>();
 
     public Pivovar(String nazev, int denniProdukce, Uzemi u, double x, double y) {
         super(nazev, u, x, y);
