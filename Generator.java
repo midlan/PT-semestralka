@@ -123,7 +123,11 @@ public class Generator {
                     
                     double x, y;
                     
-                    while(uzemi.budovaPobliz(x = Math.random() * uzemi.getSirka(), y = Math.random() * uzemi.getVyska(), MIN_VZDALENOST_HOSP));
+                    do {
+                        x = Math.random() * uzemi.getSirka();
+                        y = Math.random() * uzemi.getVyska();
+                    }
+                    while(uzemi.budovaPobliz(x, y, MIN_VZDALENOST_HOSP));
                     
                     hospyPivovar[i] = i < tankHosp ? new TankovaHospoda(nazvyHosp[i], uzemi, x, y) : new SudovaHospoda(nazvyHosp[i], uzemi, x, y);
                 }
@@ -152,9 +156,15 @@ public class Generator {
                 
                 for (Prekladiste preklad : prekladiste) {
                     for (int i = 0; i < PREKLADISTE_CEST; i++) {
+                        
                         Budova bud;
-                        //výběr hospody z kruhu kolem překladiště
-                        while(preklad.vzdalenost(bud = hospyPivovar[(int)(Math.random() * (hospyPivovar.length - 2))]) > maxVzdalHospaPreklad);
+                        
+                        do {
+                            //výběr hospody z kruhu kolem překladiště
+                            bud = hospyPivovar[(int)(Math.random() * (hospyPivovar.length - 2))];
+                        }
+                        while(preklad.vzdalenost(bud) > maxVzdalHospaPreklad);
+                        
                         preklad.pridejCestu(bud);
                     }
                 }
@@ -168,7 +178,9 @@ public class Generator {
             }
         
         }
-        catch(Exception e) {
+        catch(IOException e) {
+            
+            System.out.println(e.getClass().getName());
             System.err.println("Vytvoření vstupního datavého souboru selhalo, program bude ukončen");
             System.exit(1);
         }
