@@ -40,6 +40,15 @@ public abstract class Budova {
         this.uzemi.pridejBudovu(this);
         budovy.put(nazev, this);
     }
+    
+    public double vzdalenost(double x, double y) {
+        
+        if(!this.uzemi.sourUvnitr(x, y)) {
+            throw new IllegalArgumentException("Souřadnice jsou mimo území, ve kterém je tato budova");
+        }
+        
+        return this.uzemi.vzdalenost(this.x, this.y, x, y);
+    }
 
     public double vzdalenost(Budova b) {
 
@@ -51,7 +60,7 @@ public abstract class Budova {
             throw new IllegalArgumentException("Budova je v z jiného území");
         }
 
-        return Math.sqrt(Math.pow(this.x - b.x, 2) + Math.pow(this.y - b.y, 2));
+        return this.vzdalenost(b.x, b.y);
     }
 
     public Budova[] nejblizsiBudovy(Budova b, int pocet) {

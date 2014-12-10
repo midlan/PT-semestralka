@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -9,8 +10,8 @@ import java.util.Set;
  */
 public class Uzemi {
 
-    public final double sirka;
-    public final double vyska;
+    private final double sirka;
+    private final double vyska;
 
     private final Set<Budova> budovy = new HashSet<Budova>();
 
@@ -35,6 +36,19 @@ public class Uzemi {
     public boolean obsahujeBudovu(Budova b) {
         return this.budovy.contains(b);
     }
+    
+    public boolean budovaPobliz(double x, double y, double vzdalenost) {
+        
+        Iterator<Budova> it = budovy.iterator();
+         
+        while (it.hasNext()) {
+            if(it.next().vzdalenost(x, y) <= vzdalenost) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
     public Budova[] nejblizsiBudovy(double x, double y, int pocet) {
 
@@ -51,9 +65,26 @@ public class Uzemi {
     public Budova[] getBudovy() {
         return (Budova[]) this.budovy.toArray();
     }
+    
+    public double vzdalenost(double x1, double y1, double x2, double y2) {
+        
+        if(!this.sourUvnitr(x2, y2) || !this.sourUvnitr(x1, y1)) {
+            throw new IllegalArgumentException("Souřadnice jsou mimo toto území");
+        }
+        
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
 
     @Override
     public String toString() {
         return this.sirka + Semestralka.DAT_SOUB_ODDELOVAC + this.vyska;
+    }
+
+    public double getSirka() {
+        return sirka;
+    }
+
+    public double getVyska() {
+        return vyska;
     }
 }
