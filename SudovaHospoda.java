@@ -33,4 +33,9 @@ public class SudovaHospoda extends Hospoda {
         
         return sudy.poll();
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + Semestralka.DAT_SOUB_ODDELOVAC + ZKRATKA;
+    }
 }

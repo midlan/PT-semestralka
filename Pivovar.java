@@ -17,9 +17,9 @@ public class Pivovar extends Budova {
         super(nazev, u, x, y);
         this.denniProdukce = denniProdukce;
     }
-
+    
     @Override
     public String toString() {
-        return super.toString() + Semestralka.DAT_SOUB_ODDELOVAC + denniProdukce;
+        return super.toString() + Semestralka.DAT_SOUB_ODDELOVAC + ZKRATKA + Semestralka.DAT_SOUB_ODDELOVAC + denniProdukce;
     }
 }

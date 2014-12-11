@@ -20,4 +20,9 @@ public class Cesta {
     public double getVzdalenost() {
         return vzdalenost;
     }
+
+    @Override
+    public String toString() {
+        return kam.getNazev();
+    }
 }
