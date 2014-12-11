@@ -13,8 +13,8 @@ public class Generator {
     private static final int VYSKA_UZEMI = 500;
     private static final String PIVOVAR_NAZEV = "Chmelokvas";
     private static final int PIVOVAR_PRODUKCE = 700000;
-    private static final int HOSPY_PIVOVAR_CEST = 15;
-    private static final int PREKLADISTE_CEST = 50;
+    private static final int HOSPY_PIVOVAR_POCET_CEST = 15;
+    private static final int PREKLADISTE_POCET_CEST = 50;
     private static final int MIN_VZDALENOST_HOSP = 2;
     public static final double HOSPOD_TANK_KOEF = 0.05;
     public static final String SOUBOR_NAZVY_HOSP = "." + File.separator + "data" + File.separator + "nazvy_hospod.txt";
@@ -141,13 +141,13 @@ public class Generator {
                 
                 for (int i = 0; i < hospyPivovar.length; i++) {
                     for (int j = 0; j < hospyPivovar.length; j++) {
-                        vzdalenosti[i][j] = hospyPivovar[i].vzdalenost(hospyPivovar[j]);
+                        vzdalenosti[i][j] = i == j ? Double.POSITIVE_INFINITY : hospyPivovar[i].vzdalenost(hospyPivovar[j]);
                     }
                 }
                 
                 //přidání cest mezi hospodami a pivovarem
                 for (int i = 0; i < hospyPivovar.length; i++) {
-                    for (int klic : kliceNejnizsichHodnot(vzdalenosti[i], HOSPY_PIVOVAR_CEST)) {
+                    for (int klic : kliceNejnizsichHodnot(vzdalenosti[i], HOSPY_PIVOVAR_POCET_CEST)) {
                         hospyPivovar[i].pridejCestu(hospyPivovar[klic]);
                     }
                 }
@@ -156,7 +156,7 @@ public class Generator {
                 double maxVzdalHospaPreklad = prekladiste[0].vzdalenost(prekladiste[1]) / 2;
                 
                 for (Prekladiste preklad : prekladiste) {
-                    for (int i = 0; i < PREKLADISTE_CEST; i++) {
+                    for (int i = 0; i < PREKLADISTE_POCET_CEST; i++) {
                         
                         Budova bud;
                         
