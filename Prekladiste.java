@@ -42,5 +42,9 @@ public class Prekladiste extends Budova {
         //možná nejlepší hned dát naložit auto a pak se jen koukat při přidání objednávky jestli náhodou tam neni nějaký auto s volnýma sudama navíc, nebo než se naloží 
         
     }
-  
+
+    @Override
+    public String toString() {
+        return super.toString() + Semestralka.DAT_SOUB_ODDELOVAC + ZKRATKA;
+    }
 }

@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -17,7 +18,6 @@ public abstract class Budova {
     private final List<Cesta> cesty = new ArrayList<Cesta>();
     
     private static final Map<String, Budova> budovy = new HashMap<String, Budova>();
-    public static final String ZKRATKA = null;
 
     public Budova(String nazev, Uzemi u, double x, double y) {
 
@@ -84,10 +84,10 @@ public abstract class Budova {
     public Cesta[] getCesty() {
         return this.cesty.toArray(new Cesta[this.cesty.size()]);
     }
-
+    
     @Override
     public String toString() {
-        return this.nazev.trim() + Semestralka.DAT_SOUB_ODDELOVAC + this.x + Semestralka.DAT_SOUB_ODDELOVAC + this.y + Semestralka.DAT_SOUB_ODDELOVAC + ZKRATKA;
+        return String.format(Locale.ROOT, this.nazev.trim() + Semestralka.DAT_SOUB_ODDELOVAC + "%.2f" + Semestralka.DAT_SOUB_ODDELOVAC + "%.2f", this.x, this.y);
     }
 
     public double getX() {

@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -77,7 +78,7 @@ public class Uzemi {
 
     @Override
     public String toString() {
-        return this.sirka + Semestralka.DAT_SOUB_ODDELOVAC + this.vyska;
+        return String.format(Locale.ROOT, "%.2f" + Semestralka.DAT_SOUB_ODDELOVAC + "%.2f", this.sirka, this.vyska);
     }
 
     public double getSirka() {

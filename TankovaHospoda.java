@@ -16,4 +16,9 @@ public class TankovaHospoda extends Hospoda {
     public void dodatPivo(int objem) {
         this.objemZasobPiva += objem;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + Semestralka.DAT_SOUB_ODDELOVAC + ZKRATKA;
+    }
 }
