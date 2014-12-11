@@ -63,16 +63,21 @@ public class Simulace extends JPanel{
 
     }
     
-    public void objednej(Hospoda hospoda){
-        
+    public void objednej(){
         /*
         Random rand=new Random();
-        int poradi = rand.nextInt(hospody.size()+1); 
-        Hospoda hospoda = hospody.get(poradi);
+        int poradi = rand.nextInt(hospodySudove.length+hospodyTankove.length+1); 
+        Hospoda hospoda;
+        if(poradi>hospodySudove.length){
+             hospoda = hospodyTankove[poradi-hospodySudove.length];
+        }
+        else{
+            Hospoda hospoda = hospody.get(poradi);
+        }
         Objednavka objednavka=new Objednavka(hospoda ,datum);
         hospoda.getPrekladiste().Objednej(objednavka);
         System.out.println("Byla vytvořena "+objednavka.toString());
-                */
+        */
     }
   
    public void skontrolujAkce(){
@@ -138,6 +143,10 @@ public class Simulace extends JPanel{
  
        System.out.println(budova.getNazev()+" - ");
        Cesta [] cesty=budova.getCesty();
+       
+       for (int i = 0; i < cesty.length; i++) {
+           System.out.println(cesty[i].getKam());
+       }
       
          /*
          for(int i=0;i<hospodyTankove.length;i++){

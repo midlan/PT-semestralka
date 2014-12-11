@@ -82,7 +82,13 @@ public abstract class Budova {
     }
 
     public Cesta[] getCesty() {
-        return (Cesta[]) this.cesty.toArray();
+        Cesta[] cestyPole=new Cesta[this.cesty.size()];
+        
+        for(int i=0;i<cestyPole.length;i++){
+            cestyPole[i]=this.cesty.get(i);
+        }
+        
+        return cestyPole;
     }
 
     @Override
