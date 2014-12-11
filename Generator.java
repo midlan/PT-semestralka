@@ -3,8 +3,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Generator {
     
@@ -113,9 +114,9 @@ public class Generator {
                     new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul + sirkaUzPul / 3, vyskaUzPul / 3),
                     new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul + 2 * sirkaUzPul / 3, 2 * vyskaUzPul / 3),
                 };
-
+                
                 //načtení názvů hospod
-                String nazvyHosp[] = new Scanner(new File(Generator.SOUBOR_NAZVY_HOSP)).useDelimiter("\\A").next().split(Semestralka.DAT_SOUB_ODRADKOVANI);
+                String nazvyHosp[] = new String(Files.readAllBytes(Paths.get(Generator.SOUBOR_NAZVY_HOSP))).split(Semestralka.DAT_SOUB_ODRADKOVANI);
                 Budova hospyPivovar[] = new Budova[nazvyHosp.length + 1];
                 
                 //rozmístění hospod
