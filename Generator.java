@@ -39,21 +39,21 @@ public class Generator {
             //zapsat cesty
             for (Budova b : budovy) {
                 
-                fw.write(b.getNazev() + oddelovac);
-                
                 Cesta cesty[] = b.getCesty();
                 
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < cesty.length - 1; i++) {
+                if(cesty.length > 0) {
                     
-                    sb.append(cesty[i].toString());
-                    
-                    if (i != cesty.length - 1) {
+                    fw.write(b.getNazev());
+
+                    StringBuilder sb = new StringBuilder();
+
+                    for (Cesta c : cesty) {
                         sb.append(oddelovac);
+                        sb.append(c.toString());
                     }
+
+                    fw.write(sb.toString() + zalomeniRadku);
                 }
-                
-                fw.write(sb.toString() + zalomeniRadku);
             }
             
             fw.close();
