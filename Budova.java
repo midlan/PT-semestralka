@@ -82,7 +82,7 @@ public abstract class Budova {
     }
 
     public Cesta[] getCesty() {
-        return (Cesta[]) this.cesty.toArray();
+        return this.cesty.toArray(new Cesta[this.cesty.size()]);
     }
 
     @Override

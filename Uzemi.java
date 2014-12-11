@@ -63,7 +63,7 @@ public class Uzemi {
     }
 
     public Budova[] getBudovy() {
-        return (Budova[]) this.budovy.toArray();
+        return this.budovy.toArray(new Budova[this.budovy.size()]);
     }
     
     public double vzdalenost(double x1, double y1, double x2, double y2) {
