@@ -18,6 +18,15 @@ public class Pivovar extends Budova {
         this.denniProdukce = denniProdukce;
     }
     
+    public void naplnitSud(Sud s) {
+        
+        if(s.isPlny()) {
+            throw new IllegalArgumentException("Sud už je plný, nelze ho znovu naplnit");
+        }
+        
+        s.setPlny(true);
+    }
+    
     @Override
     public String toString() {
         return super.toString() + Semestralka.DAT_SOUB_ODDELOVAC + ZKRATKA + Semestralka.DAT_SOUB_ODDELOVAC + denniProdukce;

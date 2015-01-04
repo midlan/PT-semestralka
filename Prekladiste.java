@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
-import java.util.PriorityQueue;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 
 /**
@@ -11,20 +12,45 @@ public class Prekladiste extends Budova {
     
     public static final String ZKRATKA = "pp";
 
-    private final int kapacita = 2000;
-    private int pocetPlnychSudu;
-    //private final ArrayList<Hospoda> zasobovaneHospody = new ArrayList<Hospoda>();
-    private Queue<Objednavka> objednavky = new PriorityQueue<Objednavka>();
-    ArrayList<NakladniVuz> nakladniVozy = new ArrayList<NakladniVuz>();
+    private final int kapacitaSudu;
+    
+    private final Queue<Objednavka> objednavky = new LinkedList<Objednavka>();
+    private final Queue<NakladniVuz> nakladniVozy = new LinkedList<NakladniVuz>();
+    private final Queue<Sud> plneSudy = new LinkedList<Sud>();
+    private final Queue<Sud> prazdneSudy = new LinkedList<Sud>();
 
     //todo překladiště potřebuje pivovar
-    public Prekladiste(String nazev, Uzemi u, double x, double y) {
+    public Prekladiste(String nazev, int kapacitaSudu, Uzemi u, double x, double y) {
         super(nazev, u, x, y);
+        this.kapacitaSudu = kapacitaSudu;
     }
     
     public void Objednej(Objednavka objednavka){
         //zkontroluj jestli se rovnou nedá hodit k nějakýmu autu
         objednavky.add(objednavka);
+    }
+    
+    public void uskladnitSud(Sud s) {
+        
+        if(this.plneSudy.size() + this.prazdneSudy.size() >= this.kapacitaSudu) {
+            throw new IllegalStateException("Už nelze uskladnit žádné sudy, kapacita je vyčerpána.");
+        }
+        
+        if(s.isPlny()) {
+            this.plneSudy.add(s);
+        }
+        else {
+            this.prazdneSudy.add(s);
+        }
+    }
+    
+    public Sud odveztPrazdnySud() {
+        try {
+            return this.prazdneSudy.remove();
+        }
+        catch(NoSuchElementException e) {
+            return null;
+        }
     }
     
     public void vysliVuz(){

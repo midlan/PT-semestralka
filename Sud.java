@@ -19,13 +19,8 @@ public class Sud {
         return this.plny;
     }
     
-    public void naplnit() {
-        
-        if(this.plny) {
-            throw new IllegalArgumentException("Sud už je plný, nelze ho znovu naplnit");
-        }
-        
-        this.plny = true;
+    public void setPlny(boolean status) {
+        this.plny = status;
     }
 
     public void vyprazdnit() {
