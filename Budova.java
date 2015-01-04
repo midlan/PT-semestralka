@@ -16,7 +16,7 @@ public abstract class Budova {
     private final String nazev;
 
     private final List<Cesta> cesty = new ArrayList<Cesta>();
-    
+
     private static final Map<String, Budova> budovy = new HashMap<String, Budova>();
 
     public Budova(String nazev, Uzemi u, double x, double y) {
@@ -40,13 +40,13 @@ public abstract class Budova {
         this.uzemi.pridejBudovu(this);
         budovy.put(nazev, this);
     }
-    
+
     public double vzdalenost(double x, double y) {
-        
-        if(!this.uzemi.sourUvnitr(x, y)) {
+
+        if (!this.uzemi.sourUvnitr(x, y)) {
             throw new IllegalArgumentException("Souřadnice jsou mimo území, ve kterém je tato budova");
         }
-        
+
         return this.uzemi.vzdalenost(this.x, this.y, x, y);
     }
 
@@ -77,29 +77,29 @@ public abstract class Budova {
         if (kam == null) {
             throw new IllegalArgumentException("Budova je null");
         }
-        
+
         if (this.cestaExistuje(kam)) {
             return; //cesta už existuje, není potřeba ji přidávat znovu
         }
 
         this.cesty.add(new Cesta(kam, this.vzdalenost(kam)));
     }
-    
+
     public boolean cestaExistuje(Budova kam) {
-        
+
         for (Cesta c : this.cesty) {
-            if(c.getKam() == kam) {
+            if (c.getKam() == kam) {
                 return true;
             }
         }
-        
+
         return false;
     }
 
     public Cesta[] getCesty() {
         return this.cesty.toArray(new Cesta[this.cesty.size()]);
     }
-    
+
     @Override
     public String toString() {
         return String.format(Locale.ROOT, this.nazev.trim() + Semestralka.DAT_SOUB_ODDELOVAC + "%.2f" + Semestralka.DAT_SOUB_ODDELOVAC + "%.2f", this.x, this.y);
@@ -116,7 +116,7 @@ public abstract class Budova {
     public String getNazev() {
         return nazev;
     }
-    
+
     public static Budova najdi(String nazev) {
         return budovy.get(nazev);
     }
