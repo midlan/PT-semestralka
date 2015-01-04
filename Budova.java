@@ -77,8 +77,23 @@ public abstract class Budova {
         if (kam == null) {
             throw new IllegalArgumentException("Budova je null");
         }
+        
+        if (this.cestaExistuje(kam)) {
+            return; //cesta už existuje, není potřeba ji přidávat znovu
+        }
 
         this.cesty.add(new Cesta(kam, this.vzdalenost(kam)));
+    }
+    
+    public boolean cestaExistuje(Budova kam) {
+        
+        for (Cesta c : this.cesty) {
+            if(c.getKam() == kam) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     public Cesta[] getCesty() {
