@@ -1,7 +1,3 @@
-
-
-
-
 /**
  *
  * @author Milan Davídek <midlan@students.zcu.cz>
