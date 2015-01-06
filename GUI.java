@@ -5,6 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
@@ -26,6 +30,7 @@ public class GUI extends JFrame {
         this.setLayout(new BorderLayout());
         addButton();
         addTextArea();
+        addMenu();
         this.pack();
         textArea.setText("ahoj");
     }
@@ -54,6 +59,64 @@ public class GUI extends JFrame {
         JScrollPane scroll = new JScrollPane(textArea);
         scroll.setPreferredSize(new Dimension(400, 400));
         this.add(scroll);
+    }
+    
+    public void addMenu(){
+        JMenuBar menuBar = new JMenuBar();
+        JMenu sled = new JMenu("Sledovani");
+        JMenu akce = new JMenu("Akce");
+        //a group of JMenuItems
+        JMenuItem objn = new JMenuItem("Vlozit objednavku",
+                KeyEvent.VK_T);
+        JMenuItem budova = new JMenuItem("Sledovat budovu",
+                KeyEvent.VK_B);
+        JMenuItem auto = new JMenuItem("Sledovat auto",
+                KeyEvent.VK_K);
+        JMenuItem vse = new JMenuItem("Sledovat vse",
+                KeyEvent.VK_V);
+
+
+        budova.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+
+        });
+        vse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+
+        });
+
+        objn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+
+        });
+        auto.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+
+        });
+        
+
+        sled.add(vse);
+        sled.add(budova);
+        sled.add(auto);
+        akce.add(objn);
+        menuBar.add(akce);
+        menuBar.add(sled);
+        this.setJMenuBar(menuBar);
+
     }
     
     public void Dlaisdwn(){
