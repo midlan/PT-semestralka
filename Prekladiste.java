@@ -18,11 +18,13 @@ public class Prekladiste extends Budova {
     private final Queue<NakladniVuz> nakladniVozy = new LinkedList<NakladniVuz>();
     private final Queue<Sud> plneSudy = new LinkedList<Sud>();
     private final Queue<Sud> prazdneSudy = new LinkedList<Sud>();
+    private final Pivovar pivovar;
 
     //todo překladiště potřebuje pivovar
-    public Prekladiste(String nazev, int kapacitaSudu, Uzemi u, double x, double y) {
+    public Prekladiste(String nazev, int kapacitaSudu, Pivovar p, Uzemi u, double x, double y) {
         super(nazev, u, x, y);
         this.kapacitaSudu = kapacitaSudu;
+        this.pivovar = p;
     }
     
     public void Objednej(Objednavka objednavka){

@@ -105,14 +105,14 @@ public class Generator {
                 Pivovar pivovar = new Pivovar(PIVOVAR_NAZEV, PIVOVAR_PRODUKCE, uzemi, sirkaUzPul, vyskaUzPul);
                 
                 Prekladiste[] prekladiste = {
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul + 2 * sirkaUzPul / 3, vyskaUzPul + vyskaUzPul / 3),
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul + sirkaUzPul / 3, vyskaUzPul + 2 * vyskaUzPul / 3),
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, 2 * sirkaUzPul / 3, vyskaUzPul + 2 * vyskaUzPul / 3),
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul / 3, vyskaUzPul + vyskaUzPul / 3),
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul / 3, 2 * vyskaUzPul / 3),
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, 2 * sirkaUzPul / 3, vyskaUzPul / 3),
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul + sirkaUzPul / 3, vyskaUzPul / 3),
-                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), uzemi, sirkaUzPul + 2 * sirkaUzPul / 3, 2 * vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, sirkaUzPul + 2 * sirkaUzPul / 3, vyskaUzPul + vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, sirkaUzPul + sirkaUzPul / 3, vyskaUzPul + 2 * vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, 2 * sirkaUzPul / 3, vyskaUzPul + 2 * vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, sirkaUzPul / 3, vyskaUzPul + vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, sirkaUzPul / 3, 2 * vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, 2 * sirkaUzPul / 3, vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, sirkaUzPul + sirkaUzPul / 3, vyskaUzPul / 3),
+                    new Prekladiste(String.format(Generator.NAZEV_PREKLADISTE_FORMAT, poradiPrekladiste++), Semestralka.KAPACITA_SUDU_PREKLADISTE, pivovar, uzemi, sirkaUzPul + 2 * sirkaUzPul / 3, 2 * vyskaUzPul / 3),
                 };
                 
                 //načtení názvů hospod
