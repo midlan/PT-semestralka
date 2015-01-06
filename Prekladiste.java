@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
@@ -8,7 +7,7 @@ import java.util.Queue;
  *
  * @author Kate
  */
-public class Prekladiste extends Budova {
+public class Prekladiste extends Budova implements IUlozisteSudu {
     
     public static final String ZKRATKA = "pp";
 
@@ -31,8 +30,9 @@ public class Prekladiste extends Budova {
         //zkontroluj jestli se rovnou nedá hodit k nějakýmu autu
         objednavky.add(objednavka);
     }
-    
-    public void uskladnitSud(Sud s) {
+
+    @Override
+    public void ulozitSud(Sud s) {
         
         if(this.plneSudy.size() + this.prazdneSudy.size() >= this.kapacitaSudu) {
             throw new IllegalStateException("Už nelze uskladnit žádné sudy, kapacita je vyčerpána.");
@@ -46,7 +46,7 @@ public class Prekladiste extends Budova {
         }
     }
     
-    public Sud odveztPrazdnySud() {
+    public Sud odevzdatPrazdnySud() {
         try {
             return this.prazdneSudy.remove();
         }

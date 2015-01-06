@@ -1,29 +1,32 @@
 
 import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
  * @author Kate
  */
-public class Pivovar extends Budova {
+public class Pivovar extends Budova implements IUlozisteSudu {
     
     public static final String ZKRATKA = "p";
     
     private final int denniProdukce;
+    private final Queue<Sud> prazdneSudy = new LinkedList<Sud>();
 
     public Pivovar(String nazev, int denniProdukce, Uzemi u, double x, double y) {
         super(nazev, u, x, y);
         this.denniProdukce = denniProdukce;
     }
-    
-    public void naplnitSud(Sud s) {
+
+    @Override
+    public void ulozitSud(Sud s) {
         
         if(s.isPlny()) {
-            throw new IllegalArgumentException("Sud už je plný, nelze ho znovu naplnit");
+            throw new IllegalArgumentException("Do pivovaru lze vracet jen prázdné sudy.");
         }
         
-        s.setPlny(true);
+        prazdneSudy.add(s);
     }
     
     @Override
