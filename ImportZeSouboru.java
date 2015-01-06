@@ -62,7 +62,7 @@ public class ImportZeSouboru {
 
 
             if(typBudovy.equals("pp")){
-                prekladiste.add(new Prekladiste(nazev, uzemi, souradniceX, souradniceY));
+                //prekladiste.add(new Prekladiste(nazev, 2000,uzemi, souradniceX, souradniceY));
             }
             else if(typBudovy.equals("s")){
                 hospodySudove.add(new SudovaHospoda(nazev, uzemi, souradniceY, souradniceY));

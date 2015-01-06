@@ -1,11 +1,4 @@
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.util.List;
-import java.util.Random;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,8 +9,7 @@ import javax.swing.JPanel;
  *
  * @author Kate
  */
-public class Simulace extends JPanel{
-    private JLabel texty;
+public class Simulace{
     Prekladiste[] prekladiste;
     SudovaHospoda[] hospodySudove;
     TankovaHospoda[] hospodyTankove;
@@ -28,7 +20,7 @@ public class Simulace extends JPanel{
 
     
     public Simulace(){ 
-        
+        /*
         ImportZeSouboru importDat=new ImportZeSouboru();
         
         this.prekladiste=importDat.getPrekladiste();
@@ -36,31 +28,7 @@ public class Simulace extends JPanel{
         this.hospodyTankove=importDat.getTankoveHospody();
         //stejnym způsobem by sme mohli řešit i objednávky .. jo to by vlastně nešlo to musí jít pro každej den .. 
         
-        
-        this.setPreferredSize(new Dimension(800, 300));
- 
-        texty=new JLabel();
-        add(texty);
-        
-        JPanel komponenty;
-        JButton sudovaHospodaButon;
-        JButton tankovaHospodaButon;
-        JButton tik;
-        
-        FlowLayout layout = new FlowLayout();
-        setLayout(layout);
-        
-        komponenty = new JPanel();
-        add(komponenty);
-
-        sudovaHospodaButon = new JButton("Objednavka pro sudovou hospodu ");
-        komponenty.add(sudovaHospodaButon);
-        
-        tankovaHospodaButon = new JButton("Objednavka pro tankovou hospod. ");
-        komponenty.add(tankovaHospodaButon);
-        
-        tik = new JButton("Tik ");
-        komponenty.add(tik);
+        */
 
     }
     
@@ -106,7 +74,7 @@ public class Simulace extends JPanel{
        int hodin = (this.cas/60%24);
        int den=this.cas/60/24;
        
-      texty.setText("Den: "+den+" hodina: "+hodin);
+//      texty.setText("Den: "+den+" hodina: "+hodin);
    }
    
    public void simuluj(){
