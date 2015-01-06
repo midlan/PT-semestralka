@@ -2,12 +2,11 @@
  *
  * @author Kate
  */
-public class Vozidlo {
-    private int x, y;
+public abstract class Vozidlo {
+    
+    private final int rychlost;
 
-
-    public Vozidlo(int x, int y){
-        this.x = x;
-        this.y = y; 
+    public Vozidlo(int rychlost) {
+        this.rychlost = rychlost;
     }
 }
