@@ -1,6 +1,7 @@
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.List;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -90,43 +91,15 @@ public class Simulace extends JPanel{
         @param hospody pole všech hospod
         @return hospody2 zkopirovane a promychane pole
    */
-   public Hospoda[] promychejPole(Hospoda[] hospody){
-        Hospoda[] hospody2 = new Hospoda[hospody.length];
-        System.arraycopy(hospody, 0, hospody2, 0, hospody.length); 
-        return hospody2;
-   }
    
    
-   public void vygenerujObjednavky(Hospoda[] hospody){
-       Hospoda[] hospodyPromychane=promychejPole(hospody);
-
-       int pocetObjednavekNaDen=4000;
+   public void vygenerujObjednavky(){
+       int objednavekNaDen=4000;
        
-       double [] procentualtniRozdeleni = { 0.25, 0.25 , 0.2, 0.15 , 0.1, 0.05 };
-       int objednavkyOd=cas+8*60; //od osmi
-       int objednavkydo=cas+16*60; //do 4 odpoledne
-   
-       double delkaUseku=(procentualtniRozdeleni.length/(objednavkydo-objednavkyOd));
-       int pocetMinutNaUsek = (int) (60 * delkaUseku);
-      
-       int indexHospody=0;
-       for(int i=0;i<(objednavkydo-objednavkyOd);i++){
-           int pocetObjednavekNaDanyUsek = (int)(pocetObjednavekNaDen*procentualtniRozdeleni[i]);
-           double usekOdHodin=8 + i * delkaUseku;
+       for(int i=0;i<objednavekNaDen;i++){
            
-           for(int j=0;j<pocetObjednavekNaDanyUsek;j++){
-               Random rand=new Random();
-               
-               int pocetMinutek = i*pocetMinutNaUsek+rand.nextInt(pocetMinutNaUsek);
-               
-               Objednavka obj=new Objednavka(hospodyPromychane[indexHospody], pocetMinutek);
-               indexHospody++;
-               
-               //když bych vzala něco z čeho když si vezmu hodnotu tak se rovnou přemaže tak by to bylo super.. protože pak by
-               //se mi nemohlo stát že se ta hospoda objedná víckrát za den
-               //úsek po minutě pak si určim kolik to je minut a pak si vygeneruju kolik objednávek se má tu minutu provést??
-         }
        }
+       
    }
    
    public void vypisCas(){

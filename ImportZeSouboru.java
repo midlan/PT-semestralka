@@ -30,7 +30,7 @@ public class ImportZeSouboru {
 
                 if(data.length == 2){ 
                    //prisla velikost mapy
-                    this.uzemi=new Uzemi(Integer.parseInt(data[0]), Integer.parseInt(data[1]));
+                    this.uzemi=new Uzemi(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
                 }
                 else if(data.length == 4 || data.length == 5){
                     //přišla budova
@@ -92,6 +92,7 @@ public class ImportZeSouboru {
             for(int i=1;i<data.length;i++){
                 Budova CestaKBudove=Budova.najdi(data[i]);
                 budova.pridejCestu(CestaKBudove);
+                System.out.println(CestaKBudove.getNazev());
             }
         }catch(Exception e){
             System.out.println("Při čtení souboru vznikla chyba, pravděpodobně formát neodpovídá požadavkům. ");

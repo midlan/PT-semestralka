@@ -17,7 +17,7 @@ public class DistancniMatice {
      * @return matice již upravena matice.
      * 
      */
-    public static int[][] pripravMatici(int[][] matice){
+    private static int[][] pripravMatici(int[][] matice){
         for(int i=0;i<matice.length;i++){
             for(int j=0;j<matice.length;j++){
                 if(matice[j][i] == 0){
@@ -33,7 +33,7 @@ public class DistancniMatice {
      * @param d matrix of distances (Integer.MAX_VALUE represents positive infinity)
      * @return matrix of predecessors
      */
-    public static int[][] floydWarshall(int[][] d) {
+    private static int[][] floydWarshall(int[][] d) {
         int[][] p = constructInitialMatixOfPredecessors(d);
         for (int k = 0; k < d.length; k++) {
             for (int i = 0; i < d.length; i++) {
